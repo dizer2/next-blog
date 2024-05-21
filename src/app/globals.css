@@ -15,7 +15,14 @@
   --bg: #0f172a;
   --textColor: #ddd;
   --softBg: #1f273a;
-  --softText: #a6a6a6;
+  --softTextColor: #c1c1c1;
+}
+
+.light {
+  --bg: white;
+  --textColor: black;
+  --softBg: #f0f0f0;
+  --softTextColor: #626262;
 }
 
 body {
