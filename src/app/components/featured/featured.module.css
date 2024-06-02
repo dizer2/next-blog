@@ -3,7 +3,7 @@
 }
 
 .title {
-	font-size: 64px;
+	font-size: 4.5vw;
 	font-weight: 300;
 }
 
@@ -48,4 +48,30 @@
 	border-radius: 5px;
 	width: max-content;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 1080px) {
+	.imgContainer {
+		display: none;
+	}
+
+	.title {
+		font-size: 6vw;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.imgContainer {
+		display: none;
+	}
+
+	.title {
+		font-size: 32px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.title {
+		font-size: 28px;
+	}
 }

@@ -55,3 +55,27 @@
 .description::first-letter {
 	text-transform: uppercase;
 }
+
+@media screen and (max-width: 1280px) {
+	.category {
+		width: 20%;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.category {
+		width: 25%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.category {
+		width: 45%;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.category {
+		width: 100%;
+	}
+}
