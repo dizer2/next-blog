@@ -6,7 +6,7 @@ interface Article {
   urlToImage: string;
   publishedAt: string;
   title: string;
-  url: string,
+  url: string;
   description: string;
 }
 
@@ -22,26 +22,26 @@ export function Card({ article }: CardProps) {
   });
 
   return (
-	<>
-	{article.urlToImage && (
-    	<div className={styles.container}>
-        <div className={styles.imageContainer}>
-          <Image src={article.urlToImage} alt="" fill className={styles.image} />
+    <>
+      {article.urlToImage && (
+        <div className={styles.container}>
+          <div className={styles.imageContainer}>
+            <Image src={article.urlToImage} alt="" fill className={styles.image} loading="lazy" />
+          </div>
+          <div className={styles.textContainer}>
+            <div className={styles.detail}>
+              <span className={styles.date}>{formattedDate}</span>
+            </div>
+            <Link href="/">
+              <h1>{article.title}</h1>
+            </Link>
+            <p className={styles.description}>
+              {article.description}
+            </p>
+            <Link className={styles.link} target="blank" href={article.url}>Read more</Link>
+          </div>
         </div>
-      <div className={styles.textContainer}>
-        <div className={styles.detail}>
-          <span className={styles.date}>{formattedDate}</span>
-        </div>
-        <Link href="/">
-          <h1>{article.title}</h1>
-        </Link>
-        <p className={styles.description}>
-          {article.description}
-        </p>
-        <Link className={styles.link} target="blank" href={article.url}>Read more</Link>
-      </div>
-    </div>
-	)}
-	</>
+      )}
+    </>
   );
 }

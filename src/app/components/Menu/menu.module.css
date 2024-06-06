@@ -110,8 +110,8 @@
 	font-size: 28px;
 }
 
-@media screen and (max-width: 1280px) {
-	.imageContainer {
+@media screen and (max-width: 1024px) {
+	.container {
 		display: none;
 	}
 }
