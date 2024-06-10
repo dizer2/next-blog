@@ -10,7 +10,7 @@ export function AuthLinks() {
   const status = "notauthenticated";
   return (
     <>
-      {status === "notauthenticated" ? (
+      {status === "authenticated" ? (
         <Link href="/login">Login</Link>
       ) : (
         <>
