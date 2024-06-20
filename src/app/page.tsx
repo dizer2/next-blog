@@ -5,14 +5,15 @@ import { CardList } from "./components/cardList/CardList";
 import { Menu } from "./components/Menu/Menu";
 import LoginPage from './login/page';
 
-export default function Home() {
+export default function Home({ searchParams}: any) {
+  const initialPage  = parseInt(searchParams.page) || 1;
   return (
     <div className={styles.container}>
       <Featured />
       <CategoryList />
 
       <div className={styles.content}>
-        <CardList />
+        <CardList initialPage ={initialPage }/>
         <Menu />
       </div>
     </div>

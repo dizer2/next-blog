@@ -68,6 +68,7 @@
 
 .category {
 	color: crimson;
+	text-transform: uppercase;
 	font-weight: 500;
 }
 

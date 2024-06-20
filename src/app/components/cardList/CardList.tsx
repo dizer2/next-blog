@@ -3,27 +3,56 @@
 import { MyPagination } from "../pagination/Pagination";
 import styles from "./cardList.module.css";
 import { Card } from "../card/Card";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-export function CardList() {
-  const [page, setPage] = useState<number>(1);
-  const [articles, setArticles] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+interface Articles {
+  id: string;
+  createdAt: any; 
+  slug: string;
+  title: string;
+  catSlug: string,
+  description: string;
+  views: number;
+  img?: string; 
+  userEmail: string;
+}
+
+export function CardList({ initialPage  }: { initialPage : number }) {
+  const [loading, setLoading] = useState<boolean>(true);
+  const [articles, setArticles] = useState<Articles[]>([]);
+  const [totalPage, setTotalPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(initialPage);
 
   useEffect(() => {
-    const fetchArticles = async (page: number) => {
-      setLoading(true); 
-      const startTime = Date.now(); 
-      const response = await fetch(`https://newsapi.org/v2/everything?q=sports&pageSize=10&page=${page}&apiKey=299f87ea269b477c8ead44e8624c97eb`);
-      const data = await response.json();
-      setArticles(data.articles);
-      console.log(data);
-      const remainingTime = Math.max(2000 - (Date.now() - startTime), 0); 
-      setTimeout(() => setLoading(false), remainingTime); 
+    console.log(page);
+  }, [page])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+          cache: "no-store"
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const data = await res.json();
+        console.log(data);
+        setArticles(data.posts);
+        setTotalPage(data.totalPage);
+      } catch (error) {
+        console.error("Error fetching data:");
+      } finally {
+        setLoading(false);
+      }
     };
 
-    fetchArticles(page);
+    fetchData();
   }, [page]);
+
+
 
   return (
     <div className={styles.container}>
@@ -35,7 +64,7 @@ export function CardList() {
           </div>
         ))}
       </div>
-      <MyPagination page={page} setPage={setPage} loading={loading} />
+      <MyPagination page={page} setPage={setPage} totalPages={totalPage} loading={loading}/>
     </div>
   );
 }

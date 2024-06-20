@@ -3,11 +3,15 @@ import styles from "./card.module.css";
 import Link from "next/link";
 
 interface Article {
-  urlToImage: string;
-  publishedAt: string;
+  id: string;
+  createdAt: any; 
+  slug: string;
+  catSlug: string,
   title: string;
-  url: string;
   description: string;
+  views: number;
+  img?: string; 
+  userEmail: string;
 }
 
 interface CardProps {
@@ -16,7 +20,7 @@ interface CardProps {
 }
 
 export function Card({ article, loading }: CardProps) {
-  const formattedDate = new Date(article.publishedAt).toLocaleDateString('en-GB', {
+  const formattedDate = new Date(article.createdAt).toLocaleDateString('en-GB', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric'
@@ -40,31 +44,32 @@ export function Card({ article, loading }: CardProps) {
                 <div className={styles.descriptionLoading}></div>
                 <div className={styles.descriptionLoading}></div>
                 <div className={styles.descriptionLoading}></div>
-                <Link className={styles.link} target="blank" href={article.url}>Loading</Link>
+                <Link className={styles.link} target="blank" href={""}>Loading</Link>
               </div>
             </div>
         </>
       ) : (
         <>
-          {article.urlToImage && (
-            <div className={styles.container}>
+          <div className={styles.container}>
+            {article.img && (
               <div className={styles.imageContainer}>
-                <Image src={article.urlToImage} alt="yuriiblog" fill className={styles.image} />
+                <Image src={`/${article.img}`} alt="yuriiblog" fill className={styles.image} />
               </div>
-              <div className={styles.textContainer}>
-                <div className={styles.detail}>
-                  <span className={styles.date}>{formattedDate}</span>
-                </div>
-                <Link href="/">
-                  <h1>{article.title}</h1>
-                </Link>
-                <p className={styles.description}>
-                  {article.description}
-                </p>
-                <Link className={styles.link} target="blank" href={article.url}>Read more</Link>
+            )}
+            <div className={styles.textContainer}>
+              <div className={styles.detail}>
+                <span className={styles.date}>{formattedDate} </span>
+                <span className={styles.category}>- {article.catSlug}</span>
               </div>
+              <Link href="/">
+                <h1>{article.title}</h1>
+              </Link>
+              <p className={styles.description}>
+                {article.description}
+              </p>
+              <Link className={styles.link} target="blank" href={"/"}>Read more</Link>
             </div>
-          )}
+          </div>
         </>
       )}
     </>
