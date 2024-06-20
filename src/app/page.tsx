@@ -13,7 +13,7 @@ export default function Home({ searchParams}: any) {
       <CategoryList />
 
       <div className={styles.content}>
-        <CardList initialPage ={initialPage }/>
+        <CardList initialPage={initialPage}/>
         <Menu />
       </div>
     </div>

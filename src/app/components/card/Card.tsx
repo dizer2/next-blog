@@ -61,13 +61,13 @@ export function Card({ article, loading }: CardProps) {
                 <span className={styles.date}>{formattedDate} </span>
                 <span className={styles.category}>- {article.catSlug}</span>
               </div>
-              <Link href="/">
+              <Link href={`/posts/${article.slug}`}>
                 <h1>{article.title}</h1>
               </Link>
               <p className={styles.description}>
-                {article.description}
+                {article.description.substring(0, 120)}...
               </p>
-              <Link className={styles.link} target="blank" href={"/"}>Read more</Link>
+              <Link className={styles.link} target="blank" href={`/posts/${article.slug}`}>Read more</Link>
             </div>
           </div>
         </>

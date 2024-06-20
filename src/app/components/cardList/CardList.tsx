@@ -17,7 +17,12 @@ interface Articles {
   userEmail: string;
 }
 
-export function CardList({ initialPage  }: { initialPage : number }) {
+interface CardList {
+  initialPage: number,
+  cat?: string
+}
+
+export function CardList({ initialPage, cat }: CardList) {
   const [loading, setLoading] = useState<boolean>(true);
   const [articles, setArticles] = useState<Articles[]>([]);
   const [totalPage, setTotalPage] = useState<number>(1);
@@ -30,7 +35,9 @@ export function CardList({ initialPage  }: { initialPage : number }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {
+        const res = await fetch(`
+          http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}
+          `, {
           cache: "no-store"
         });
 
@@ -50,7 +57,7 @@ export function CardList({ initialPage  }: { initialPage : number }) {
     };
 
     fetchData();
-  }, [page]);
+  }, [page, cat]);
 
 
 

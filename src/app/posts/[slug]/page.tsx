@@ -1,9 +1,36 @@
-import Image from "next/image";
-import { Menu } from "../components/Menu/Menu";
-import styles from "./singlePage.module.css"
-import Comments from "../components/comments/Comments";
+'use client'
 
-export default function SinglePage() {
+import Image from "next/image";
+import styles from "./singlePage.module.css"
+import Comments from "@/app/components/comments/Comments";
+import { Menu } from "@/app/components/Menu/Menu";
+import { useEffect, useState } from "react";
+
+export default function SinglePage({ params }: any) {
+
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 	  try {
+	// 		const res = await fetch(`
+	// 		  http://localhost:3000/api/posts/${slug}}
+	// 		  `, {
+	// 		  cache: "no-store"
+	// 		});
+	
+	// 		if (!res.ok) {
+	// 		  throw new Error("Failed to fetch data");
+	// 		}
+	
+	// 		const data = await res.json();
+	// 		console.log(data);
+	// 	  } catch (error) {
+	// 		console.error("Error fetching data:");
+	// 	  } 
+	// 	};
+	
+	// 	fetchData();
+	//   }, [slug]);
+
   return (
     <div className={styles.container}>
 		<div className={styles.infoContainer}>
