@@ -3,24 +3,33 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-//* GET SINGLE POST
-export const GET = async ({req, params}: any) => {
-  const {slug} = params;
+export const GET = async (req, { params }) => {
+  const { slug } = params;
 
   try {
     const post = await prisma.post.findUnique({
-      where: {slug: slug as any}
+      where: { slug },
+      include: { user: true }, 
     });
-    
+
+    if (!post) {
+      throw new Error("Post not found");
+    }
+
+    await prisma.post.update({
+      where: { slug },
+      data: { views: post.views + 1 }, 
+    });
+
     return new NextResponse(
       JSON.stringify(post),
       { status: 200 }
     );
   } catch (err) {
-    console.log(err);
+    console.error("Error fetching or updating post:", err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong" }),
-      { status: 500 }
+      JSON.stringify({ message: "Post not found" }),
+      { status: 404 }
     );
   }
 };

@@ -9,4 +9,5 @@
 
 .buttons button {
 	color: var(--softTextColor);
+	border-color: var(--softTextColor);
 }

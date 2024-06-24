@@ -9,11 +9,6 @@ export function AuthLinks() {
   const [open, setOpen] = useState<boolean>(false);
   const [statusLogin, setStatusLogin] = useState<boolean>(false);
   const { status } = useSession();
-
-  useEffect(() => {
-    console.log(status);
-  }, [status])
-
  
   return (
     <>
