@@ -35,8 +35,7 @@ export function CardList({ initialPage, cat }: CardList) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`
-          http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}
+        const res = await fetch(`/api/posts?page=${page}&cat=${cat || ""}
           `, {
           cache: "no-store"
         });

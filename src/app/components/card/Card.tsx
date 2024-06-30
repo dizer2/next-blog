@@ -53,7 +53,7 @@ export function Card({ article, loading }: CardProps) {
           <div className={styles.container}>
             {article.img && (
               <div className={styles.imageContainer}>
-                <Image src={`/${article.img}`} alt="yuriiblog" fill className={styles.image} />
+                <Image src={`${article.img}`} alt="yuriiblog" fill className={styles.image} />
               </div>
             )}
             <div className={styles.textContainer}>
@@ -65,7 +65,9 @@ export function Card({ article, loading }: CardProps) {
                 <h1>{article.title}</h1>
               </Link>
               <p className={styles.description}>
-                {article.description.substring(0, 120)}...
+                
+		  	        <p dangerouslySetInnerHTML={{ __html: article.description.substring(0, 120)}}></p>
+
               </p>
               <Link className={styles.link} target="blank" href={`/posts/${article.slug}`}>Read more</Link>
             </div>

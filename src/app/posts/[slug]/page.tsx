@@ -21,7 +21,7 @@ export default function SinglePage({ params }: any) {
         }
 
         const data = await res.json();
-		console.log(data);
+		    console.log(data);
         setSinglePost(data); 
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -31,6 +31,8 @@ export default function SinglePage({ params }: any) {
     fetchData();
   }, [params]);
 
+
+
   return (
     <div className={styles.container}>
       <div className={styles.infoContainer}>
@@ -38,7 +40,7 @@ export default function SinglePage({ params }: any) {
           <h1 className={styles.title}>{singlePost.title}</h1>
           
           <div className={styles.user}>
-		  	{singlePost.user?.image && (
+		  	    {singlePost.user?.image && (
               <div className={styles.userImageContainer}>
                 <Image src={singlePost.user.image} alt="User Image" width={50} height={50} className={styles.avatar} />
               </div>
@@ -50,11 +52,11 @@ export default function SinglePage({ params }: any) {
             </div>
           </div>
         </div>
-		{singlePost.img &&
+		  {singlePost.img &&
         <div className={styles.imageContainer}>
-           <Image src={`/${singlePost.img}`} alt="Post Image" width={400} height={300} className={styles.image} />
+           <Image src={`${singlePost.img}`} alt="Post Image" width={400} height={300} className={styles.image} />
         </div>
-		}
+		  }
       </div>
       <div className={styles.content}>
         <div className={styles.post}>
