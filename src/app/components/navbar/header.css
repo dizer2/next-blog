@@ -1,0 +1,36 @@
+
+.px-6 {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+
+.title__page {
+	font-weight: 700;
+}
+
+.navbarContent {
+	padding-left: 2rem;
+}
+
+nav {
+	justify-content: space-between !important;
+}
+
+@media screen and (max-width: 800px) {
+	.navbarContent {
+		display: none !important;
+	}
+
+	.button__block {
+		display: none !important;
+	}
+
+	.burger {
+		display: flex !important;
+	}
+
+	.burger__menu {
+		gap: 20px !important;
+		
+	}
+}

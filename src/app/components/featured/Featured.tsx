@@ -1,5 +1,5 @@
-import Image from "next/image";
 import styles from "./featured.module.css"
+import {Image} from "@nextui-org/react";
 
 export function Featured() {
   return (
@@ -10,7 +10,13 @@ export function Featured() {
 
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src="/p1.jpeg" alt="blog" fill className={styles.image}/>
+   
+        <Image
+            src="/home__photo.png"
+            alt="blog"
+            isZoomed
+            className={`${styles.image}`}
+        />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
