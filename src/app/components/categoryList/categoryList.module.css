@@ -1,5 +1,8 @@
 .title {
-	margin: 50px 0px;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-size: 32px;
+	font-weight: 500;
 }
 
 .categories {
@@ -20,6 +23,10 @@
 	border-radius: 10px;
 }
 
+.skeleton {
+	width: 150px !important;
+}
+
 .category[data-category="style"] {
   background-color: #57c4ff31;
 }
@@ -29,7 +36,7 @@
 }
 
 .category[data-category="food"] {
-	background-color: #7fb88133;
+	background-color: #48f74e33;
 }
 
 .category[data-category="travel"] {
@@ -45,7 +52,10 @@
 }
 
 .image {
-	border-radius: 50%;
+	min-width: 35px !important;
+	min-height: 35px !important;
+	height: 35px !important;
+	border-radius: 5px;
 }
 
 .description {

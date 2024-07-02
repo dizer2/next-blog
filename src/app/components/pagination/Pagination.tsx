@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect, useState } from "react";
 import styles from "./pagination.module.css";
-import MuiPagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 import { useRouter } from "next/navigation";
+import {Pagination} from "@nextui-org/react";
+import { useEffect } from "react";
 
 interface PaginationProps {
   page: number;
@@ -13,27 +12,28 @@ interface PaginationProps {
   totalPages: number;
 }
 
+
 export function MyPagination({ page, setPage, totalPages }: PaginationProps) {
   const router = useRouter();
-  
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+
+  useEffect(() => {
+    if (typeof page === "string" && !isNaN(parseInt(page))) {
+      setPage(parseInt(page));
+    }
+  }, [page, setPage]);
+
+  const handleChange = (value: number) => {
     setPage(value);
     router.push(`?page=${value}`);
   };
 
   return (
     <div className={styles.container}>
-      <Stack spacing={2}>
-        <MuiPagination
-          className={styles.buttons}
-          count={totalPages}
-          shape="rounded"
-          color="primary"
-          variant="outlined"
-          page={page}
-          onChange={handleChange}
-        />
-      </Stack>
+      <Pagination
+        onChange={handleChange}
+        total={totalPages}
+        initialPage={page} 
+      />
     </div>
   );
 }

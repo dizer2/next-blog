@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./categoryList.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Card, Skeleton } from "@nextui-org/react";
 
 interface Category {
   id: string;
@@ -37,7 +38,33 @@ export function CategoryList() {
     fetchData();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <h1 className={styles.title}>Popular Categories</h1>
+        <div className={styles.categories}>
+          {[...Array(categories.length)].map((_, index) => (
+            <Card key={index} className={`space-y-5 p-4 ${styles.skeleton}`} radius="lg">
+            <Skeleton className="rounded-lg">
+              <div className="h-24 rounded-lg bg-default-300"></div>
+            </Skeleton>
+            <div className="space-y-3">
+              <Skeleton className="w-3/5 rounded-lg">
+                <div className="h-3 w-3/5 rounded-lg bg-default-200"></div>
+              </Skeleton>
+              <Skeleton className="w-4/5 rounded-lg">
+                <div className="h-3 w-4/5 rounded-lg bg-default-200"></div>
+              </Skeleton>
+              <Skeleton className="w-2/5 rounded-lg">  
+                <div className="h-3 w-2/5 rounded-lg bg-default-300"></div>
+              </Skeleton>
+            </div>
+          </Card>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -53,9 +80,9 @@ export function CategoryList() {
             {item.img && (
               <Image
                 src={item.img}
+                width={20}
+                height={20}
                 alt={item.title}
-                width={32}
-                height={32}
                 className={styles.image}
               />
             )}

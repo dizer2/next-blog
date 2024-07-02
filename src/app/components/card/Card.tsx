@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./card.module.css";
 import Link from "next/link";
+import { Button } from "@nextui-org/react";
 
 interface Article {
   id: string;
@@ -62,14 +63,14 @@ export function Card({ article, loading }: CardProps) {
                 <span className={styles.category}>- {article.catSlug}</span>
               </div>
               <Link href={`/posts/${article.slug}`}>
-                <h1>{article.title}</h1>
+                <h1 className={styles.title}>{article.title}</h1>
               </Link>
               <p className={styles.description}>
                 
-		  	        <p dangerouslySetInnerHTML={{ __html: article.description.substring(0, 120)}}></p>
+              <p dangerouslySetInnerHTML={{ __html: article.description.substring(0, 120) + '...' }}></p>
 
               </p>
-              <Link className={styles.link} target="blank" href={`/posts/${article.slug}`}>Read more</Link>
+              <Button as={Link} color="primary" className={styles.link} target="blank" href={`/posts/${article.slug}`}>Read more</Button>
             </div>
           </div>
         </>

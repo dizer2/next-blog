@@ -5,6 +5,7 @@ import styles from "./singlePage.module.css";
 import Comments from "@/app/components/comments/Comments";
 import { Menu } from "@/app/components/Menu/Menu";
 import { useEffect, useState } from "react";
+import "./single.css"
 
 export default function SinglePage({ params }: any) {
   const [singlePost, setSinglePost] = useState<any>({}); 
@@ -37,7 +38,7 @@ export default function SinglePage({ params }: any) {
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>{singlePost.title}</h1>
+          <h1 className={styles.title}>{singlePost.title} - {singlePost.views}</h1>
           
           <div className={styles.user}>
 		  	    {singlePost.user?.image && (
@@ -61,7 +62,7 @@ export default function SinglePage({ params }: any) {
       <div className={styles.content}>
         <div className={styles.post}>
           <div className={styles.description}>
-		  	<p dangerouslySetInnerHTML={{ __html: singlePost.description }}></p>
+		  	  <p dangerouslySetInnerHTML={{ __html: singlePost.description }}></p>
           </div>
           <div className={styles.comment}>
             <Comments postSlug={params.slug}/>

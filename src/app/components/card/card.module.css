@@ -3,6 +3,20 @@
 	display: flex;
 	align-items: center;
 	gap: 50px;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	padding: 20px 0;
+}
+
+
+
+.imgBlock {
+	height: 100%;
+	object-fit: cover;
+}
+
+.cardBlock {
+	gap: 20px;
 }
 
 .imageContainer {
@@ -59,7 +73,11 @@
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+}
+
+
+.detail {
+	margin-bottom: 20px;
 }
 
 .date {
@@ -78,10 +96,15 @@
 	color: var(--softTextColor);
 }
 
+.title {
+	font-size: 24px;
+	font-weight: 600;
+}
+
+
 .link {
-	border-bottom: 1px solid crimson;
-	width: max-content;
-	padding: 2px 0;
+	width: 150px;
+	margin-top: 35px;
 }
 
 @media screen and (max-width: 1280px) {

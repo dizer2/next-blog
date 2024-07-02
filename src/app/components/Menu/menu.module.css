@@ -10,7 +10,8 @@
 }
 
 .title {
-	font-size: 28px;
+	font-size: 32px;
+	font-weight: 500;
 }
 
 .items {
@@ -56,23 +57,42 @@
 	color: white;
 }
 
+.category {
+	color: #333;
+	font-weight: 500;
+}
 
 .category[data-category="style"] {
-	background-color: #789cff;
+	background-color: #57c4ff31;
 }
 
 .category[data-category="fashion"] {
-	background-color: #ff7887;
+	background-color: #f944d231;
 }
 
 .category[data-category="food"] {
-	background-color: #7fb881;
+	background-color: #30fe3633;
 }
 
 .category[data-category="travel"] {
-	background-color: #ff7857;
+	background: #ff674236 !important;
 }
 
+.category[data-category="culture"] {
+	background: #ffb04f45;
+}
+
+.category[data-category="coding"] {
+	background: #4f3fff31 !important;
+}
+
+.user__block {
+	margin-left: 10px;
+}
+
+.card {
+	width: 450px;
+}
 
 .postTitle {
 	font-size: 18px;

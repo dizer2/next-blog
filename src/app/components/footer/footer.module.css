@@ -1,9 +1,10 @@
 .container {
 	margin-top: 50px;
-	padding: 40px 0;
-
+	padding: 25px 25px;
+	background-color: #006FEE;
 	display: flex;
 	justify-content: space-between;
+	border-radius: 20px 20px 0 0;
 	color: var(--softTextColor);
 	border-top: 1px solid var(--softBg);
 }
@@ -16,6 +17,9 @@
 
 .logoText {
 	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: white;
 }
 
 .description {
@@ -23,6 +27,41 @@
 	font-weight: 300;
 	margin: 20px 0;
 }
+
+.info {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.imgBlock {
+	width: 70px;
+	height: 70px;
+	border-radius: 10px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social {
+	display: flex;
+	gap: 20px;
+}
+
+.social__block {
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+
 
 .icons {
 	display: flex;
