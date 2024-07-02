@@ -1,5 +1,4 @@
-'use client'
-
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
@@ -13,7 +12,6 @@ import {
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import { Button, Select, SelectItem } from "@nextui-org/react";
-import Image from "next/image";
 
 export default function WritePage() {
   const router = useRouter();
@@ -153,13 +151,10 @@ export default function WritePage() {
         color="secondary"
         variant="shadow"
       >
-        {/* Ensure Image component is rendered only in the browser */}
-        {typeof window !== 'undefined' && (
-          <label className="flex items-center justify-center gap-3 text-white font-medium text-lg	" htmlFor="image">
-            <Image src="/camera.svg" alt="camer" width={30} height={30} />
-            Upload photo
-          </label>
-        )}
+        <label className="flex items-center justify-center gap-3 text-white font-medium text-lg	" htmlFor="image">
+          <Image src="/camera.svg" alt="camera" width={30} height={30} />
+          Upload photo
+        </label>
       </Button>
 
       <div className={styles.buttons}>
