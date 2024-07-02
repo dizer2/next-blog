@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import ReactQuill from "react-quill";
+import dynamic from 'next/dynamic';
 import "react-quill/dist/quill.bubble.css";
 import styles from "./write.module.css";
 import {
@@ -12,6 +12,7 @@ import {
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import { Button, Select, SelectItem } from "@nextui-org/react";
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function WritePage() {
   const router = useRouter();
