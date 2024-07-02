@@ -7,38 +7,42 @@
 }
 
 .wrapper {
-	background-color: var(--softBg);
-	padding: 150px 200px;
+	background-color: #eee;
+	width: 100%;
+	padding: 200px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 50px;
-	border-radius: 10px;
+	gap: 20px;
+	border-radius: 20px;
 }
 
 .socialButton {
-	width: 200px;
+	width: 350px;
 	height: 50px;
-	border-radius: 5px;
+	border-radius: 10px;
 	border: none;
-	color: white;
 	font-weight: bold;
 	cursor: pointer;
+	gap: 15px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .socialButton:first-child {
-	background-color: #ff5555;
+	background-color: #1877F2;
+	color: white;
 }
 
 .socialButton:nth-child(2) {
-	background-color: #111;
+	background-color: #fff;
+    color: rgba(0, 0, 0, 0.5); 
 }
 
 .socialButton:nth-child(3) {
-	background-color: #087BEA;
+	background-color: #000;
+	color: white;
 }
 
 

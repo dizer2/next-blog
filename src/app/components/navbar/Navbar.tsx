@@ -73,19 +73,19 @@ export default function Header() {
 
       <NavbarMenu className="burger__menu items-center justify-center">
       <NavbarItem>
-          <Link color="foreground"  className="text-lg"  href="/">
+          <Link color="foreground"  className="textNavbar"  href="/">
             Home
           </Link>
         </NavbarItem>
         {status === "authenticated" && (
           <NavbarItem>
-            <Link href="/write"  className="text-lg"  color="foreground">
+            <Link href="/write"  className="textNavbar"  color="foreground">
               Write
             </Link>
           </NavbarItem>
         )}
         <NavbarItem >
-          <Link href="#" className="text-lg" color="foreground">
+          <Link href="#" className="textNavbar" color="foreground">
             Contact
           </Link>
         </NavbarItem>

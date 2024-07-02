@@ -31,3 +31,39 @@
 	border-radius: 5px;
 }
 
+@media screen and (max-width: 1050px) {
+	.image {
+		display: none;
+	}
+
+	.container {
+		height: 200px;
+		position: relative;
+	}
+
+	.title {
+		position: absolute;
+		font-size: 36px;
+		line-height: 50px;
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+	.container {
+		height: 150px;
+		position: relative;
+	}
+	.title {
+		font-size: 24px;
+		line-height: 40px;
+		font-weight: 700;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.title {
+		font-size: 20px;
+		font-weight: 600;
+	}
+}

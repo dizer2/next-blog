@@ -13,7 +13,7 @@ export default function SinglePage({ params }: any) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/posts/${params.slug}`, {
+        const res = await fetch(`/api/posts/${params.slug}`, {
           cache: "no-store"
         });
 

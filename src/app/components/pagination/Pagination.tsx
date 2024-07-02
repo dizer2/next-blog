@@ -8,12 +8,13 @@ import { useEffect } from "react";
 interface PaginationProps {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  setLoading: any,
   loading: boolean; 
   totalPages: number;
 }
 
 
-export function MyPagination({ page, setPage, totalPages }: PaginationProps) {
+export function MyPagination({ page, setPage, totalPages, setLoading }: PaginationProps) {
   const router = useRouter();
 
   useEffect(() => {
@@ -24,7 +25,8 @@ export function MyPagination({ page, setPage, totalPages }: PaginationProps) {
 
   const handleChange = (value: number) => {
     setPage(value);
-    router.push(`?page=${value}`);
+    setLoading(true);
+    router.replace(`?page=${value}`);
   };
 
   return (

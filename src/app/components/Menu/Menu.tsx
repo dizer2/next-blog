@@ -53,20 +53,7 @@ export function Menu() {
 
     fetchData();
   }, []);
-
-  // <Link key={index}  href={`posts/${item.slug}`} className={styles.item}>
-  //         <div className={styles.textContainer}>
-  //           <span  className={`${styles.category} ${styles.travel}`} data-category={item.catSlug}>{item.catSlug}</span>
-  //           <h3 className={styles.postTitle}>{item.title.substring(0, 12)}</h3>
-
-  //           <div className={styles.detail}>
-  //             <span className={styles.username}>{item.user?.name}</span>
-  //             <span className={styles.date}> - {new Date(item.createdAt).toLocaleDateString()}</span>
-  //           </div>
-
-  //           <div>{item.views}</div>
-  //         </div>
-  //       </Link>
+ 
   return (
     <div className={styles.container}>
       <h2 className={styles.subtitle}>{"What's hot"}</h2>

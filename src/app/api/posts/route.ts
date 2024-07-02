@@ -23,6 +23,9 @@ export const GET = async (req: any) => {
       take: POSTS_PER_PAGE,
       skip: POSTS_PER_PAGE * (page - 1),
       where: whereClause,
+      orderBy: {
+        createdAt: 'desc',  
+      },
     });
 
     const totalPosts = await prisma.post.count({
@@ -42,7 +45,6 @@ export const GET = async (req: any) => {
     );
   }
 };
-
 
 // CREATE A POST
 export const POST = async (req: any) => {

@@ -13,10 +13,18 @@ import {
 } from "firebase/storage";
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
+import { Button, Select, SelectItem } from "@nextui-org/react";
 
 export default function WritePage() {
   const router = useRouter();
-
+  const [category] = useState([
+    { label: "fashion", value: "fashion" },
+    { label: "culture", value: "culture" },
+    { label: "coding", value: "coding" },
+    { label: "style", value: "style" },
+    { label: "travel", value: "travel" },
+    { label: "food", value: "food" },
+  ]);
   const [open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
@@ -75,6 +83,11 @@ export default function WritePage() {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
+    if (!title.trim() || !value.trim()) {
+      alert("Please fill out both the title and description fields.");
+      return;
+    }
+    
     console.log(media);
     const res = await fetch("/api/posts", {
       method: "POST",
@@ -94,70 +107,80 @@ export default function WritePage() {
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+    const selectedFile = e.target.files?.[0];
+  
+    if (!selectedFile) {
+      return;
     }
+  
+    if (!selectedFile.type.startsWith('image/')) {
+      alert('Please upload an image file.');
+      e.target.value = '';
+    }
+  
+    setFile(selectedFile);
   };
+  
 
   return (
     <div className={styles.container}>
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Write title for article"
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <select
-        className={styles.select}
-        onChange={(e) => setCatSlug(e.target.value)}
-      >
-        <option value="style">style</option>
-        <option value="fashion">fashion</option>
-        <option value="food">food</option>
-        <option value="culture">culture</option>
-        <option value="travel">travel</option>
-        <option value="coding">coding</option>
-      </select>
+
       <div className={styles.editor}>
-        <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image
-            className="icon"
-            src="/plus.svg"
-            alt="icon"
-            width={16}
-            height={16}
-          />
-        </button>
-        {open && (
-          <div className={styles.add}>
-            <input
-              type="file"
-              id="image"
-              onChange={handleFileChange}
-              style={{ display: "none" }}
-            />
-            <button className={styles.addButton}>
-              <label htmlFor="image">
-                <Image src="/image.svg" alt="icon" width={16} height={16} />
-              </label>
-            </button>
-            <button className={styles.addButton}>
-              <Image src="/external.svg" alt="icon" width={16} height={16} />
-            </button>
-            <button className={styles.addButton}>
-              <Image src="/video.svg" alt="icon" width={16} height={16} />
-            </button>
-          </div>
-        )}
         <ReactQuill
           theme="bubble"
           className={styles.textArea}
           value={value}
           onChange={setValue}
-          placeholder="Tell your story"
+          placeholder="Describe your article"
         />
       </div>
-      <button className={styles.publish} onClick={handleSubmit}>Publish</button>
+
+      <input
+        type="file"
+        id="image"
+        accept="image/*"
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
+      <Button
+        className={styles.photo}
+        color="secondary"
+        variant="shadow"
+      >
+        <label className="flex items-center justify-center gap-3 text-white font-medium text-lg	" htmlFor="image">
+          <Image src="/camera.svg" alt="camer" width={30} height={30} />
+          Upload photo
+        </label>
+      </Button>
+
+      <div className={styles.buttons}>
+        <Select
+          items={category}
+          color="success"
+          label="Category"
+          placeholder="Select category"
+          className="max-w-xs"
+          onChange={(e) => setCatSlug(e.target.value)}
+        >
+          {(animal) => (
+            <SelectItem key={animal.value}>{animal.label}</SelectItem>
+          )}
+        </Select>
+        <Button
+          className={styles.publish}
+          onClick={handleSubmit}
+          color="success"
+          variant="shadow"
+        >
+          Publish
+        </Button>
+      </div>
     </div>
   );
 }

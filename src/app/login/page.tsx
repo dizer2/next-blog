@@ -4,6 +4,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import styles from "./login.module.css";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function LoginPage() {
   const { data: session, status } = useSession();
@@ -22,7 +23,7 @@ export default function LoginPage() {
   }
 
   if (typeof window !== 'undefined' && status === "authenticated") {
-    return null; // Prevent rendering on server side
+    return null; 
   }
 
   return (
@@ -34,11 +35,20 @@ export default function LoginPage() {
         </>
       ) : (
         <>
-          <div className={styles.container}>
+          <div className={`${styles.container}`}>
             <div className={styles.wrapper}>
-              <div onClick={() => signIn('google')} className={styles.socialButton}>Sign in with Google</div>
-              <div onClick={() => signIn('github')} className={styles.socialButton}>Sign in with Github</div>
-              <div onClick={() => signIn('facebook')} className={styles.socialButton}>Sign in with Facebook</div>
+            <div onClick={() => signIn('facebook')} className={styles.socialButton}>
+              <Image src="/fasebook.svg" alt="fasebook" width={24} height={24}/>
+              <span>Sign in with Facebook</span>
+            </div>
+            <div onClick={() => signIn('facebogoogleok')} className={styles.socialButton}>
+              <Image src="/google.svg" alt="fasebook" width={24} height={24}/>
+              <span>Continue with Google</span>
+            </div>
+            <div onClick={() => signIn('github')} className={styles.socialButton}>
+              <Image src="/github.svg" alt="fasebook" width={24} height={24}/>
+              <span>Continue with GitHub</span>
+            </div>
             </div>
           </div>
         </>

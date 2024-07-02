@@ -10,8 +10,7 @@
 }
 
 .title {
-	font-size: 32px;
-	font-weight: 500;
+	font-size: 28px;
 }
 
 .items {
@@ -132,6 +131,17 @@
 
 .categoryList div {
 	width: 350px;
+}
+
+.categoryList div div div div{
+	width: auto;
+}
+
+
+@media screen and (max-width: 1280px) {
+	.card {
+		width: 350px;
+	}
 }
 
 @media screen and (max-width: 1024px) {

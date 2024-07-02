@@ -2,7 +2,7 @@
 
 import { MyPagination } from "../pagination/Pagination";
 import styles from "./cardList.module.css";
-import { Card } from "../card/Card";
+import { Card, CardSkeleton } from "../card/Card";
 import { useEffect, useState } from "react";
 
 interface Articles {
@@ -51,7 +51,9 @@ export function CardList({ initialPage, cat }: CardList) {
       } catch (error) {
         console.error("Error fetching data:");
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false); 
+        }, 1000);
       }
     };
 
@@ -64,13 +66,21 @@ export function CardList({ initialPage, cat }: CardList) {
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.posts}>
-        {articles.map((article, index) => (
-          <div key={index} className={styles.post}>
-            <Card loading={loading} article={article} />
-          </div>
-        ))}
+      {loading ? (
+           Array.from({ length: 4 }).map((_, index) => (
+            <div key={index} className={styles.post}>
+              <CardSkeleton />
+            </div>
+          ))
+        ) : (
+          articles.map((article, index) => (
+            <div key={index} className={styles.post}>
+              <Card loading={loading} article={article} />
+            </div>
+          ))
+        )}
       </div>
-      <MyPagination page={page} setPage={setPage} totalPages={totalPage} loading={loading}/>
+      <MyPagination page={page} setPage={setPage} totalPages={totalPage} setLoading={setLoading} loading={loading}/>
     </div>
   );
 }

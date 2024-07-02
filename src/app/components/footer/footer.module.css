@@ -86,6 +86,10 @@
 	font-weight: bold;
 }
 
+.line {
+	display: none;
+}
+
 @media screen and (max-width: 1024px) {
 	.links {
 		gap: 50px;
@@ -102,6 +106,36 @@
 		gap: 50px;
 	}
 
+	.info {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.imgBlock {
+		width: 50px;
+		height: 50px;
+		border-radius: 10px;
+		background-color: #fff;
+	}
+
+	.logoImg {
+		width: 40px;
+		height: 40px;
+	}
+
+	.line {
+		display: block;
+		width: 100%;
+		margin: 20px 0;
+		height: 1px;
+		background-color: white;
+	}
+	
+	
+
 	.links {
 		width: 100%;
 		justify-content: space-between;
@@ -111,5 +145,15 @@
 @media screen and (max-width: 640px) {
 	.links {
 		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.logo {
+		display: flex;
+		flex-direction: column;
+	}
+	.logoText {
+		text-align: center;
 	}
 }

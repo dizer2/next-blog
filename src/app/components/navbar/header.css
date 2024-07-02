@@ -12,6 +12,11 @@
 	padding-left: 2rem;
 }
 
+
+.textNavbar {
+	font-size: 32px !important;
+}
+
 nav {
 	justify-content: space-between !important;
 }
@@ -30,7 +35,16 @@ nav {
 	}
 
 	.burger__menu {
-		gap: 20px !important;
-		
+		gap: 50px !important;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.textNavbar {
+		font-size: 24px !important;
+	}
+
+	.burger__menu {
+		gap: 35px !important;
 	}
 }

@@ -1,103 +1,25 @@
-.editor {
-  display: flex;
-  gap: 20px;
-  height: 700px;
-  position: relative;
-}
-
-.textArea {
-  width: 100%;
-}
-
-.button,
-.addButton {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: white;
-  border: 1px solid var(--textColor);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.addButton {
-  border-color: #1a8917;
-}
-
-.add {
-  display: flex;
-  gap: 20px;
-  position: absolute;
-  z-index: 999;
-  left: 50px;
-}
-
-.button path {
-  fill: var(--textColor);
-}
-
-.input {
-  padding: 50px;
-  font-size: 64px;
-  border: none;
-  outline: none;
-  color: var(--textColor);
-  background-color: transparent;
-}
-
-.publish {
-  position: absolute;
-  top: 30px;
-  right: 20px;
-  padding: 10px 20px;
-  border: none;
-  background-color: #1a8917;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .container {
   position: relative;
   display: flex;
   flex-direction: column;
+  padding-top: 50px;
 }
 
-.select {
-  margin-bottom: 50px;
-  padding: 10px 20px;
-  margin-left: 50px;
-  width: max-content;
-}
 
 .editor {
   display: flex;
   gap: 20px;
-  height: 700px;
   position: relative;
 }
+
 
 .select {
   margin-bottom: 50px;
   padding: 10px 20px;
-  margin-left: 50px;
   width: max-content;
 }
 
-.button,
-.addButton {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: transparent;
-  border: 1px solid var(--textColor);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+
 
 .addButton {
   border-color: #1a8917;
@@ -113,31 +35,124 @@
   left: 50px;
 }
 
+
+
 .input {
-  padding: 50px;
   font-size: 64px;
+  font-weight: 700;
   border: none;
   outline: none;
   background-color: transparent;
-  color: var(--textColor);
+  color: white;
+  background-color: #333;
+  border-radius: 20px;
+  padding: 20px 20px;
 }
 
 .input::placeholder {
-  color: #b3b3b1;
+  color: white;
 }
 
 .textArea {
   width: 100%;
+  min-height: 300px;
+  max-height: 800px;
+  color: white;
+  background-color: #333;
+  padding: 20px 20px;
+  border-radius: 20px;
+  margin-top: 25px;
+  font-size: 24px;
+}
+
+.textArea::placeholder {
+  color: white;
 }
 
 .publish {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  padding: 10px 20px;
-  border: none;
-  background-color: #1a8917;
-  color: white;
-  cursor: pointer;
-  border-radius: 20px;
+  width: 210px;
+  height: 50px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.photo {
+  width: 100%;
+  height: 80px;
+  margin-top: 20px;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.select {
+  width: 250px !important;
+  height: 50px;
+}
+
+@media screen and (max-width: 1200px) {
+  .input {
+    font-size: 48px;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .input {
+    font-size: 28px;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 5px;
+  }
+
+  .textArea {
+    width: 100%;
+    min-height: 300px;
+    max-height: 800px;
+    color: white;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-size: 24px;
+  }
+
+  .photo {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+  }
+
+  .buttons {
+    margin-top: 40px;
+  }
+
+  .select {
+    width: 50% !important;
+  }
+
+  .publish {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .input {
+    font-size: 24px;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 5px;
+  }
+
+  .textArea {
+    font-size: 20px;
+  }
+
+ 
 }

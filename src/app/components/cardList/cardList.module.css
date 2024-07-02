@@ -8,3 +8,9 @@
 	font-size: 32px;
 	font-weight: 500;
 }
+
+@media screen and (max-width: 768px) {
+	.title {
+		font-size: 28px !important;
+	}
+}

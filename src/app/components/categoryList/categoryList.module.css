@@ -12,6 +12,7 @@
 	gap: 20px;
 }
 
+
 .category {
 	display: flex;
 	align-items: center;
@@ -82,10 +83,18 @@
 	.category {
 		width: 45%;
 	}
+	.title {
+		font-size: 28px !important;
+	}
 }
 
 @media screen and (max-width: 640px) {
 	.category {
 		width: 100%;
+	}
+
+	.skeleton {
+		width: 100% !important;
+		height: 80px !important;
 	}
 }
