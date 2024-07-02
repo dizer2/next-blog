@@ -1,6 +1,5 @@
-"use client";
+'use client'
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.bubble.css";
@@ -14,6 +13,7 @@ import {
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import { Button, Select, SelectItem } from "@nextui-org/react";
+import Image from "next/image";
 
 export default function WritePage() {
   const router = useRouter();
@@ -25,7 +25,6 @@ export default function WritePage() {
     { label: "travel", value: "travel" },
     { label: "food", value: "food" },
   ]);
-  const [open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const [media, setMedia] = useState<string>("");
@@ -121,7 +120,6 @@ export default function WritePage() {
     setFile(selectedFile);
   };
   
-
   return (
     <div className={styles.container}>
       <input
@@ -132,13 +130,15 @@ export default function WritePage() {
       />
 
       <div className={styles.editor}>
-        <ReactQuill
-          theme="bubble"
-          className={styles.textArea}
-          value={value}
-          onChange={setValue}
-          placeholder="Describe your article"
-        />
+        {typeof window !== 'undefined' && (
+          <ReactQuill
+            theme="bubble"
+            className={styles.textArea}
+            value={value}
+            onChange={setValue}
+            placeholder="Describe your article"
+          />
+        )}
       </div>
 
       <input
@@ -153,10 +153,13 @@ export default function WritePage() {
         color="secondary"
         variant="shadow"
       >
-        <label className="flex items-center justify-center gap-3 text-white font-medium text-lg	" htmlFor="image">
-          <Image src="/camera.svg" alt="camer" width={30} height={30} />
-          Upload photo
-        </label>
+        {/* Ensure Image component is rendered only in the browser */}
+        {typeof window !== 'undefined' && (
+          <label className="flex items-center justify-center gap-3 text-white font-medium text-lg	" htmlFor="image">
+            <Image src="/camera.svg" alt="camer" width={30} height={30} />
+            Upload photo
+          </label>
+        )}
       </Button>
 
       <div className={styles.buttons}>
