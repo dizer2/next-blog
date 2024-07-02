@@ -6,12 +6,13 @@ import ThemeContextProvider from "./context/ThemeContext";
 import ThemeProvider from "./providers/ThemeProvider";
 import AuthProvider from "./providers/AuthProvider";
 import Header from "./components/navbar/Navbar";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Blog App",
-  description: "The best blog app!",
+  description: "Start writing articles right here, right now! Share your insights on any topic and connect with your loved ones.",
 };
 
 export default function RootLayout({
@@ -21,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/logo.ico" />
       <body className={inter.className}>
         <AuthProvider>
           <ThemeContextProvider>

@@ -3,33 +3,24 @@
 }
 
 .title {
-	color: var(--softTextColor);
-	margin-bottom: 30px;
+	color: #006FEE;
+	margin-bottom: 10px;
 }
 
 .write {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 30px;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .input {
 	width: 100%;
-	padding: 20px;
+	height: 150px;
 	outline: none;
-	border: 1px solid teal;
+	border: 1px solid #006FEE;
 	border-radius: 5px;
-}
-
-.button {
-	padding: 16px 20px;
-	background-color: teal;
-	color: white;
-	font-weight: bold;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+	resize: none; 
+	padding: 20px;
 }
 
 .comments {
@@ -46,6 +37,44 @@
 	gap: 20px;
 	margin-bottom: 20px;
 }
+
+.button {
+	color: white;
+}
+
+
+.commentSkeleton {
+	display: flex !important;
+	align-items: center;
+	gap: 15px;
+}
+
+.skeletonImage {
+	min-width: 50px;
+	min-height: 50px;
+	border-radius: 50%;
+	background-color: #e0e0e0;
+  }
+  
+  .skeletonText {
+	height: 20px;
+	background-color: #e0e0e0;
+	margin: 10px 0;
+  }
+
+  .userSkeleton {
+	width: 100%;
+  }
+  
+  .skeletonTextHalf {
+	width: 50%;
+  }
+  
+  .skeletonTextFull {
+	width: 60%;
+	height: 15px;
+  }
+  
 
 .image {
 	border-radius: 50%;
