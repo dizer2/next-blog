@@ -50,13 +50,12 @@ export function Card({ article, loading }: CardProps) {
         <Link href={`/posts/${article.slug}`}>
           <h1 className={styles.title}>{article.title}</h1>
         </Link>
-        <p className={styles.description}>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: article.description.substring(0, 120) + "...",
-            }}
-          ></p>
-        </p>
+        <p
+          className={styles.description}
+          dangerouslySetInnerHTML={{
+            __html: article.description.substring(0, 120) + "...",
+          }}
+        ></p>
         <Button
           as={Link}
           color="primary"
@@ -71,7 +70,6 @@ export function Card({ article, loading }: CardProps) {
   );
 }
 
-
 export function CardSkeleton() {
   return (
     <div className={styles.container}>
@@ -80,12 +78,27 @@ export function CardSkeleton() {
       </div>
       <div className={styles.textContainer}>
         <div className={styles.detailSkeleton}>
-          <Skeleton style={{ width: "80px", height: "20px", marginBottom: "3px" }} className={styles.date} />
-          <Skeleton style={{ width: "120px", height: "20px", marginTop: "3px" }} className={styles.category} />
+          <Skeleton
+            style={{ width: "80px", height: "20px", marginBottom: "3px" }}
+            className={styles.date}
+          />
+          <Skeleton
+            style={{ width: "120px", height: "20px", marginTop: "3px" }}
+            className={styles.category}
+          />
         </div>
-        <Skeleton style={{ width: "90%", height: "30px", marginTop: "10px"  }} className={styles.title} />
-        <Skeleton style={{ width: "90%", height: "30px", margin: "5px 0" }} className={styles.description} />
-        <Skeleton style={{ width: "100px", height: "40px" }} className={styles.link} />
+        <Skeleton
+          style={{ width: "90%", height: "30px", marginTop: "10px" }}
+          className={styles.title}
+        />
+        <Skeleton
+          style={{ width: "90%", height: "30px", margin: "5px 0" }}
+          className={styles.description}
+        />
+        <Skeleton
+          style={{ width: "100px", height: "40px" }}
+          className={styles.link}
+        />
       </div>
     </div>
   );
