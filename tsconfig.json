@@ -26,10 +26,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/utils/conncect.ts",
+    "src/app/utils/conncect.js",
     "globals.d.js",
     "prisma/**/*.ts",
-    "routes/**/*.ts"
+    "routes/**/*.ts",
+    "./globals.d.ts"
   ],
   "exclude": ["node_modules"]
 }
