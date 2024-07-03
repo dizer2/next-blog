@@ -43,11 +43,6 @@ export default function Header() {
             </Link>
           </NavbarItem>
         )}
-        <NavbarItem>
-          <Link href="#" color="foreground">
-            Contact
-          </Link>
-        </NavbarItem>
       
       </NavbarContent>
 
@@ -84,11 +79,7 @@ export default function Header() {
             </Link>
           </NavbarItem>
         )}
-        <NavbarItem >
-          <Link href="#" className="textNavbar" color="foreground">
-            Contact
-          </Link>
-        </NavbarItem>
+      
 
         <NavbarItem>
           {status === "authenticated" ? (

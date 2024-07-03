@@ -15,7 +15,7 @@ import {
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import { Button, Select, SelectItem } from "@nextui-org/react";
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function WritePage() {
   const router = useRouter();
@@ -131,7 +131,7 @@ export default function WritePage() {
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      <div className={styles.editor}>
+      {/* <div className={styles.editor}>
         {typeof window !== 'undefined' && (
           <ReactQuill
             theme="bubble"
@@ -141,7 +141,7 @@ export default function WritePage() {
             placeholder="Describe your article"
           />
         )}
-      </div>
+      </div> */}
 
       <input
         type="file"
