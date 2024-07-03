@@ -5,17 +5,13 @@ import { useEffect, useState } from "react";
 import dynamic from 'next/dynamic';
 import "react-quill/dist/quill.bubble.css";
 import styles from "./write.module.css";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 
-// Dynamically import ReactQuill
+// Dynamically import ReactQuill with { ssr: false }
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function WritePage() {
@@ -37,48 +33,49 @@ export default function WritePage() {
   useEffect(() => {
     const upload = async () => {
       if (!file) return;
-
-      const storage = getStorage(app);
-      const name = `${new Date().getTime()}_${file.name}`;
-      const storageRef = ref(storage, name);
-
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      try {
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const progress =
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log("Upload is " + progress + "% done");
-            switch (snapshot.state) {
-              case "paused":
-                console.log("Upload is paused");
-                break;
-              case "running":
-                console.log("Upload is running");
-                break;
+  
+      if (typeof window !== 'undefined') {
+        const storage = getStorage(app);
+        const name = `${new Date().getTime()}_${file.name}`;
+        const storageRef = ref(storage, name);
+  
+        const uploadTask = uploadBytesResumable(storageRef, file);
+  
+        try {
+          uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+              const progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log("Upload is " + progress + "% done");
+              switch (snapshot.state) {
+                case "paused":
+                  console.log("Upload is paused");
+                  break;
+                case "running":
+                  console.log("Upload is running");
+                  break;
+              }
+            },
+            (error) => {
+              console.error("Upload failed", error);
+            },
+            () => {
+              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                setMedia(downloadURL);
+                console.log("File available at", downloadURL);
+              });
             }
-          },
-          (error) => {
-            console.error("Upload failed", error);
-          },
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              setMedia(downloadURL);
-              console.log("File available at", downloadURL);
-            });
-          }
-        );
-      } catch (error) {
-        console.error("Error during file upload:", error);
+          );
+        } catch (error) {
+          console.error("Error during file upload:", error);
+        }
       }
     };
-
-    if (typeof window !== 'undefined') {
-      upload();
-    }
+  
+    upload();
   }, [file]);
+  
 
   const slugify = (str: string) =>
     str
