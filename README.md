@@ -1,7 +1,7 @@
 
 <h1 class="red-text"><code>Yurii-blog</code>
 </h1>
-https://password-saveme.netlify.app/
+https://yurii-blog.vercel.app
 
 <hr/>
 
