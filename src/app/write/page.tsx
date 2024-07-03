@@ -1,6 +1,5 @@
 'use client';
 
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import dynamic from 'next/dynamic';
@@ -15,7 +14,9 @@ import {
 import { app } from "../utils/firebase";
 import { useRouter } from "next/navigation";
 import { Button, Select, SelectItem } from "@nextui-org/react";
-// const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
+// Dynamically import ReactQuill
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function WritePage() {
   const router = useRouter();
@@ -131,17 +132,15 @@ export default function WritePage() {
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      {/* <div className={styles.editor}>
-        {typeof window !== 'undefined' && (
-          <ReactQuill
-            theme="bubble"
-            className={styles.textArea}
-            value={value}
-            onChange={setValue}
-            placeholder="Describe your article"
-          />
-        )}
-      </div> */}
+      <div className={styles.editor}>
+        <ReactQuill
+          theme="bubble"
+          className={styles.textArea}
+          value={value}
+          onChange={setValue}
+          placeholder="Describe your article"
+        />
+      </div>
 
       <input
         type="file"
