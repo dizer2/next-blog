@@ -96,6 +96,21 @@
 	color: var(--softTextColor);
 }
 
+.description h1{
+	font-size: 18px;
+	font-weight: 300;
+}
+
+.description p{
+	font-size: 18px;
+	font-weight: 300;
+}
+
+.description h2{
+	font-size: 18px;
+	font-weight: 300;
+}
+
 .title {
 	font-size: 24px;
 	font-weight: 600;
