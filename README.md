@@ -5,7 +5,7 @@ https://password-saveme.netlify.app/
 
 <hr/>
 
-<img width="1680" alt="Screenshot" src="./bg.jpg">
+<img width="1680" alt="Screenshot" src="./bg.png">
 
 ### Main features: 
  - Next.js 
