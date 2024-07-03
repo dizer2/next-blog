@@ -1,8 +1,7 @@
 import { getAuthSession } from "@/app/utils/auth";
-import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-const prisma = new PrismaClient();
+import prisma from "@/app/utils/conncect";
 
 export const GET = async (req: any) => {
   try {

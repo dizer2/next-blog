@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+// route.ts
 import { NextResponse } from "next/server";
+import prisma from "@/app/utils/conncect";
 
-const prisma = new PrismaClient();
 export const GET = async (req: any, { params }: { params: { slug: string } }) => {
   const { slug } = params;
 
