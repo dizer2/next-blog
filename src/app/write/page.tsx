@@ -133,13 +133,15 @@ export default function WritePage() {
       />
 
       <div className={styles.editor}>
-        <ReactQuill
-          theme="bubble"
-          className={styles.textArea}
-          value={value}
-          onChange={setValue}
-          placeholder="Describe your article"
-        />
+        {typeof window !== 'undefined' && (
+          <ReactQuill
+            theme="bubble"
+            className={styles.textArea}
+            value={value}
+            onChange={setValue}
+            placeholder="Describe your article"
+          />
+        )}
       </div>
 
       <input
@@ -169,9 +171,9 @@ export default function WritePage() {
           className="max-w-xs"
           onChange={(e) => setCatSlug(e.target.value)}
         >
-          {(animal) => (
-            <SelectItem key={animal.value}>{animal.label}</SelectItem>
-          )}
+          {category.map((cat) => (
+            <SelectItem key={cat.value} value={cat.value}>{cat.label}</SelectItem>
+          ))}
         </Select>
         <Button
           className={styles.publish}
