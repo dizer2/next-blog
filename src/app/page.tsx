@@ -2,7 +2,7 @@ import styles from './home.module.css'
 import { Featured } from "./components/featured/Featured";
 import { CategoryList } from "./components/categoryList/CategoryList";
 import { CardList } from "./components/cardList/CardList";
-import { Menu } from "./components/Menu/Menu";
+import { Menu } from "./components/Menu/Menu"; 
 
 export default function Home({ searchParams}: any) {
   const initialPage  = parseInt(searchParams.page) || 1;
@@ -15,6 +15,13 @@ export default function Home({ searchParams}: any) {
         <CardList initialPage={initialPage}/>
         <Menu />
       </div>
-    </div>
+    </div> 
   );
+  
 }
+
+
+
+
+
+
