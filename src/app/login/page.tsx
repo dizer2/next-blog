@@ -37,10 +37,10 @@ export default function LoginPage() {
         <>
           <div className={`${styles.container}`}>
             <div className={styles.wrapper}>
-            <div onClick={() => signIn('facebook')} className={styles.socialButton}>
+            {/* <div onClick={() => signIn('facebook')} className={styles.socialButton}>
               <Image src="/fasebook.svg" alt="fasebook" width={24} height={24}/>
               <span>Sign in with Facebook</span>
-            </div>
+            </div> */}
             <div onClick={() => signIn('facebogoogleok')} className={styles.socialButton}>
               <Image src="/google.svg" alt="fasebook" width={24} height={24}/>
               <span>Continue with Google</span>
